@@ -76,10 +76,11 @@ app.get('/auth/google/callback',
 ```js
 // save the session to the cookie
 passport.serializeUser((user, done) => {
-    // user --> cookie session
+   // user --> cookie session
+   // here we are getting whole user profile from google
 
     // we are directly populating the cookie here: not recommended
-    done(null, user) // null means no error
+    done(null, user.id) // null means no error
     // done(error, user) if there was any error
 })
 

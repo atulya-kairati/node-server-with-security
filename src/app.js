@@ -32,7 +32,8 @@ passport.serializeUser((user, done) => {
     // user --> cookie session
 
     // we are directly populating the cookie here: not recommended
-    done(null, user) // null means no error
+    // done(null, user) // null means no error
+    done(null, user.id) // we minimize what we store in the cookies 
     // done(error, user) if there was any error
 })
 
