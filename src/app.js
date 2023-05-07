@@ -62,9 +62,16 @@ app.use(passport.session()) // this is to use sessions
 // Middleware
 const checkIfLoggedIn = (req, res, next) => {
 
-    let loggedIn = false
+    // Write logic to detect if user is logged in
 
-    // TODO: Write logic to detect if user is logged in
+    // passport create a property in [req] object if the user is logged in
+    // let loggedIn = req.user != undefined // or !!req.user
+    // but doing this alone is quite insecure 
+    // since user property could have come from somewhere else
+
+    // passport also populates the [req] object with [isAuthenticated()] method
+    
+    let loggedIn = req.isAuthenticated() && req.user
 
     if (loggedIn) return next()
 
